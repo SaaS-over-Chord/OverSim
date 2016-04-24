@@ -56,6 +56,10 @@ void GlobalDhtTestMap::initialize()
     globalStatistics = GlobalStatisticsAccess().get();
     WATCH_MAP(dataMap);
 
+    for(int j=0;j<=12;j++)
+    {
+         hash[j]=OverlayKey::random();
+    }
     periodicTimer = new cMessage("dhtTestMapTimer");
 
     scheduleAt(simTime(), periodicTimer);

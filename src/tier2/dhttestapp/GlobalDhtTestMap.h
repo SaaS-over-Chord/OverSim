@@ -88,6 +88,11 @@ public:
      */
     const OverlayKey& getRandomKey();
 
+    /*
+         * Save a set of 12 hash entries to be common for all nodes
+         *
+         */
+    OverlayKey hash[13];
     size_t size() { return dataMap.size(); };
     uint32_t p2pnsNameCount;
 

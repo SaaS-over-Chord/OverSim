@@ -64,6 +64,7 @@ private:
         OverlayKey key;
         BinaryValue value;
 
+
         DHTStatsContext(bool measurementPhase,
                         simtime_t requestTime,
                         const OverlayKey& key,
@@ -84,6 +85,10 @@ private:
      */
     OverlayKey getRandomSoftware();
 
+    /**
+         * generate random hashes and save in the array
+         */
+    OverlayKey hash[13];
 
     /**
      * generate a random human readable binary value

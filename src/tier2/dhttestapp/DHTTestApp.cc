@@ -69,12 +69,22 @@ void DHTTestApp::initializeApp(int stage)
         ttl = par("testTtl");
     }
 
+    //initilise the array of hashed entries
+    //OverlayKey hash[13];//have 12 addresses corresponding to software
+
+
     globalNodeList = GlobalNodeListAccess().get();
     underlayConfigurator = UnderlayConfiguratorAccess().get();
     globalStatistics = GlobalStatisticsAccess().get();
 
+
     globalDhtTestMap = dynamic_cast<GlobalDhtTestMap*>(simulation.getModuleByPath(
             "globalObserver.globalFunctions[0].function"));
+
+    for(int i=0;i<=12;i++)
+    {
+        hash[i]=globalDhtTestMap->hash[i];
+    }
 
     if (globalDhtTestMap == NULL) {
         throw cRuntimeError("DHTTestApp::initializeApp(): "
@@ -316,17 +326,20 @@ void DHTTestApp::handleTimerEvent(cMessage* msg)
                 || nodeIsLeavingSoon)
             return;
 
+
+
+
         if (p2pnsTraffic) {
             if (globalDhtTestMap->p2pnsNameCount < 4*globalNodeList->getNumNodes()) {
                 for (int i = 0; i < 4; i++) {
 
                    //OverlayKey destKey = OverlayKey::random();
-                   string hash[] = {"matlab","firefox","MSWord"};//names of the softwares that the host provides
+                        int idx = intuniform(0,12);
+                        EV<<"idx is"<<idx;
+                       OverlayKey destKey = hash[idx];
 
-                       BinaryValue b = new BinaryValue(hash[intuniform(0,2)]);
-                       OverlayKey destKey = OverlayKey::sha1(b);
                    //OverlayKey destKey = getRandomSoftware();
-                    EV << "destkey to be inserted (software name hash): "<< destKey ;
+                    EV << "destkey to be inserted (software name hash): "<< destKey.toString()<<endl ;
                     DHTputCAPICall* dhtPutMsg = new DHTputCAPICall();
                     dhtPutMsg->setKey(destKey);
                     dhtPutMsg->setValue(generateRandomValue());
@@ -346,12 +359,12 @@ void DHTTestApp::handleTimerEvent(cMessage* msg)
 
         // create a put test message with random destination key
         // OverlayKey destKey = OverlayKey::random();
-        string hash[] = {"matlab","firefox","MSWord"};//names of the softwares that the host provides
 
-                               BinaryValue b = new BinaryValue(hash[intuniform(0,2)]);
-                               OverlayKey destKey = OverlayKey::sha1(b);
+        int idx = intuniform(0,12);
+        EV<<"idx is"<<idx;
+        OverlayKey destKey = hash[idx];
         //OverlayKey destKey = getRandomSoftware();
-        EV << "destkey to be inserted (software name hash): previous version"<< destKey ;
+        EV << "destkey to be inserted (software name hash): previous version"<< destKey.toString() ;
         DHTputCAPICall* dhtPutMsg = new DHTputCAPICall();
         dhtPutMsg->setKey(destKey);
         dhtPutMsg->setValue(generateRandomValue());

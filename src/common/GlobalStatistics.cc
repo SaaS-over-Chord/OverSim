@@ -38,7 +38,8 @@ void GlobalStatistics::initialize()
 
     measuring = measureNetwInitPhase = par("measureNetwInitPhase");
     measureStartTime = 0;
-
+    softwareQuerySuccess = 0;
+    softwareQueryFailure = 0;
     currentDeliveryVector.setName("Current Delivery Ratio");
 
     // start periodic globalStatTimer

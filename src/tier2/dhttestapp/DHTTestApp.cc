@@ -196,6 +196,8 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
     if (!(msg->getIsSuccess())) {
         //cout << "DHTTestApp: success == false" << endl;
         EV<<"lookup was in vain 1 not is success";
+        globalStatistics->softwareQueryFailure++;
+        cout <<"software query failure : "<< globalStatistics->softwareQueryFailure;
         RECORD_STATS(numGetError++);
         delete context;
         return;
@@ -206,6 +208,8 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
     if (entry == NULL) {
         //unexpected key
         EV<<"lookup was in vain 2 NUll entry";
+        globalStatistics->softwareQueryFailure++;
+        cout <<"software query failure : "<< globalStatistics->softwareQueryFailure;
         RECORD_STATS(numGetError++);
         //cout << "DHTTestApp: unexpected key" << endl;
         delete context;
@@ -216,6 +220,8 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
         //this key doesn't exist anymore in the DHT, delete it in our hashtable
 
         EV<<"lookup was in vain 3 key not exist in DHT";
+        globalStatistics->softwareQueryFailure++;
+        cout <<"software query failure : "<< globalStatistics->softwareQueryFailure;
         globalDhtTestMap->eraseEntry(context->key);
         delete context;
 
@@ -241,9 +247,13 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
         {
             EV<<"lookup was in vain"<<endl;
             cout<<"lookup was in vain"<<endl;
+            globalStatistics->softwareQueryFailure++;
+            cout <<"software query failure : "<< globalStatistics->softwareQueryFailure;
         }
         else
         {
+            globalStatistics->softwareQuerySuccess++;
+            cout << "Software query success frequency:" << globalStatistics->softwareQuerySuccess;
             EV<<"lookup was a success , can use software now, ip is alive"<<str<<endl;
         }
 

@@ -1,4 +1,4 @@
-file 4567 1460797032                                            
+file 4567 1461749530                                            
 version 2
 run Chord-0-20160416-14:25:54-684
 attr configname Chord
@@ -15,12 +15,11 @@ attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-
 vector 1  SimpleUnderlayNetwork.globalObserver.globalStatistics  "GlobalNodeList: Number of nodes"  ETV
-vector 2  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Hop Count"  ETV
-vector 3  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Latency"  ETV
-vector 4  SimpleUnderlayNetwork.globalObserver.globalStatistics  "LifetimeChurn: Time between deletes"  ETV
 1	836 115 1856 11050 50 400 8 9 10 75 705
+vector 2  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Hop Count"  ETV
 2	951 1531 1914 11719 51.307685156 428.812765264 64 0 3 141 387
+vector 3  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Latency"  ETV
 3	2482 2049 1914 11719 51.307685156 428.812765264 64 0 0.82487605 17.746183547 7.345358461991
+vector 4  SimpleUnderlayNetwork.globalObserver.globalStatistics  "LifetimeChurn: Time between deletes"  ETV
 4	4531 36 5545 5545 184.182294204 184.182294204 1 184.182294204 184.182294204 184.182294204 33923.117498249

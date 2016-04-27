@@ -56,6 +56,8 @@ public:
     double deliveredKBRTestAppMessages; //!< total number of messages delivered by KBRTestApp
     int testCount;
     cOutVector currentDeliveryVector; //!< statistical output vector for current delivery ratio
+    int softwareQuerySuccess; //!< the number of times the software query in the DHT Testapp is successful
+    int softwareQueryFailure; //!< the number of times the software query in the DHT Testapp fails
 
     /**
      * Destructor

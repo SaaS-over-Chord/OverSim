@@ -195,6 +195,7 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
 
     if (!(msg->getIsSuccess())) {
         //cout << "DHTTestApp: success == false" << endl;
+        EV<<"lookup was in vain 1 not is success";
         RECORD_STATS(numGetError++);
         delete context;
         return;
@@ -204,6 +205,7 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
 
     if (entry == NULL) {
         //unexpected key
+        EV<<"lookup was in vain 2 NUll entry";
         RECORD_STATS(numGetError++);
         //cout << "DHTTestApp: unexpected key" << endl;
         delete context;
@@ -213,6 +215,7 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
     if (simTime() > entry->endtime) {
         //this key doesn't exist anymore in the DHT, delete it in our hashtable
 
+        EV<<"lookup was in vain 3 key not exist in DHT";
         globalDhtTestMap->eraseEntry(context->key);
         delete context;
 
@@ -226,6 +229,24 @@ void DHTTestApp::handleGetResponse(DHTgetCAPIResponse* msg,
             return;
         }
     } else {
+        BinaryValue msgip= msg->getResult(0).getValue();//record returned IP
+        cout<<"came in block"<<endl;
+        stringstream os; //create a bidirectional stringStream
+        os<<msgip;//pass the binaryValue string representation to stream object as only << method overloaded
+        char str[1024];
+        strcpy(str,os.str().c_str());//copy the contents of stream object to a char array for IPvXAddress object
+
+        cout<<"came in block with str"<<str<<endl;
+        if(globalNodeList->peerStorage.find( IPvXAddress(str) )==globalNodeList->peerStorage.end())//find if ip lies out of
+        {
+            EV<<"lookup was in vain"<<endl;
+            cout<<"lookup was in vain"<<endl;
+        }
+        else
+        {
+            EV<<"lookup was a success , can use software now, ip is alive"<<str<<endl;
+        }
+
         delete context;
         if ((msg->getResultArraySize() > 0) &&
                 (msg->getResult(0).getValue() == entry->value)) {

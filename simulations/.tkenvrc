@@ -1,0 +1,3 @@
+# Partial Tkenv config file -- see $HOME/.tkenvrc as well
+inspector "SimpleUnderlayNetwork.globalObserver.globalStatistics.KBRTestApp: One-way Latency" "cOutVector" "1" "629x314+156+156:iconic"
+

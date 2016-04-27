@@ -1,0 +1,24 @@
+file 2160533 1460804256                                         
+version 2
+run CustomChord-0-20160416-16:16:20-1512
+attr configname CustomChord
+attr datetime 20160416-16:16:20
+attr experiment CustomChord
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network oversim.underlay.simpleunderlay.SimpleUnderlayNetwork
+attr processid 1512
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+vector 1  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Hop Count"  ETV
+vector 2  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Latency"  ETV
+vector 3  SimpleUnderlayNetwork.globalObserver.globalStatistics  "GlobalNodeList: Number of nodes"  ETV
+1	747 915440 156849 8667414 252.373353685 8005.923678535 33057 0 8 156598 793914
+2	916187 1241275 156849 8667414 252.373353685 8005.923678535 33057 0 3.16161691 21881.046689368 19219.536289854
+3	2157462 3071 208076 8660908 300 8000 155 256 256 39680 10158080

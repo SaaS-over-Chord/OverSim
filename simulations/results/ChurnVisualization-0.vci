@@ -1,0 +1,22 @@
+                                                                
+version 2
+run ChurnVisualization-0-20160416-14:23:38-6336
+attr configname ChurnVisualization
+attr datetime 20160416-14:23:38
+attr experiment ChurnVisualization
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network oversim.underlay.simpleunderlay.SimpleUnderlayNetwork
+attr processid 6336
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+vector 1  SimpleUnderlayNetwork.globalObserver.globalStatistics  "GlobalNodeList: Number of nodes"  ETV
+vector 2  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Hop Count"  ETV
+vector 3  SimpleUnderlayNetwork.globalObserver.globalStatistics  "KBRTestApp: One-way Latency"  ETV
+vector 0  SimpleUnderlayNetwork.globalObserver.globalStatistics  "Current Delivery Ratio"  ETV
